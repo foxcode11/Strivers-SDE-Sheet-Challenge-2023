@@ -1,0 +1,19 @@
+#include <bits/stdc++.h> 
+int maximumProfit(vector<int> &p)
+{
+        int max=0;
+        int c=p[0];
+        for(int i=1;i<p.size();i++)
+        {
+            if(p[i]<c)
+            {
+                c=p[i];
+            }
+            if(p[i]>c)
+            {
+                if(p[i]-c>max)
+                    max=p[i]-c;
+            }
+        }
+        return max;
+}
