@@ -1,0 +1,44 @@
+#include <bits/stdc++.h> 
+    void swap(vector<int>&v,int i,int j)
+    {
+        int t=v[i];
+        v[i]=v[j];
+        v[j]=t;
+    }
+vector<int> nextPermutation(vector<int> &per, int n)
+{
+        int x;
+        int index;
+        bool flag=true;
+        for(int i=n-1;i>=1;i--)
+        {
+            if(per[i-1]<per[i])
+            {
+                flag=false;
+                x=i-1;
+                break;
+            }
+        }
+        index=x;
+        int mi=INT_MAX;
+        for(int j=x+1;j<n;j++)
+        {
+            if(per[j]>per[x])
+            {
+                if(per[j]<mi)
+                {
+                    index=j;
+                }
+            }
+        }
+        if(flag)
+        {
+            reverse(per.begin(),per.end());
+        }
+        else
+        {
+            swap(per,x,index);
+            reverse(per.begin()+(x+1),per.end());
+        }
+        return per;
+}
