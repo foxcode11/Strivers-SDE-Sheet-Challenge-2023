@@ -1,0 +1,23 @@
+#include <bits/stdc++.h> 
+
+ int paths(int i,int j,int m,int n,vector<vector<int>>&dp)
+    {
+        if(i==m-1&&j==n-1)
+        {
+            return 1;
+        }
+        if(i>=m||j>=n)
+            return 0;
+        if(dp[i][j]!=0)
+            return dp[i][j];
+        int x=paths(i,j+1,m,n,dp);
+        int y=paths(i+1,j,m,n,dp);
+        dp[i][j]=x+y;
+        return dp[i][j];
+    }
+
+int uniquePaths(int m, int n) 
+{
+        vector<vector<int>>dp(m,vector<int>(n,0));
+        return paths(0,0,m,n ,dp);
+}
